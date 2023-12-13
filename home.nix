@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-let
+# let
   #unstable = import(builtins.fetchGit {
   #  # Descriptive name to make the store path easier to identify
   #  name = "nixos-unstable-2023-10-06";
@@ -10,16 +10,18 @@ let
   #  ref = "refs/heads/nixos-unstable";
   #  rev = "fdd898f8f79e8d2f99ed2ab6b3751811ef683242";
   #});
-  unstable = import(builtins.fetchTarball {
-    # Descriptive name to make the store path easier to identify
-    name = "nixos-unstable-2023-10-06";
-    url = "https://github.com/nixos/nixpkgs/archive/7131f3c223a2d799568e4b278380cd9dac2b8579.tar.gz";
-    # Commit hash for nixos-unstable as of 2023-10-06
-    # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-    #ref = "refs/heads/nixos-unstable";
-  })
-  { config = config.nixpkgs.config; };
-in
+  # unstable = import(builtins.fetchTarball {
+  #   # Descriptive name to make the store path easier to identify
+  #   name = "nixos-unstable-2023-12-13";
+  #   url = "https://github.com/nixos/nixpkgs/archive/a9bf124c46ef298113270b1f84a164865987a91c.tar.gz";
+  #   sha256 = "0wdjv548d84s74wrncqqj5pdzfq7nj8xn97l0v7r82jl6124jil2";
+  #   
+  #   # Commit hash for nixos-unstable as of 2023-10-06
+  #   # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
+  #   #ref = "refs/heads/nixos-unstable";
+  # })
+  # { config = config.nixpkgs.config; };
+# in
 {
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "yaman";
@@ -61,12 +63,11 @@ in
       krita
       zotero
       #obsidian
-      iwgtk
-      deluge
+      # iwgtk
+      # deluge
       #jetbrains.webstorm
       # zulu
-      temurin-bin
-      flutter-unwrapped
+      # temurin-bin
       ninja
       clang
       pkg-config-unwrapped
@@ -75,7 +76,6 @@ in
       jsoncpp
       gtk3 gtk4
       wireshark
-      dwarfs
       fuse-overlayfs
       gettext
       netcat-gnu jq
@@ -83,7 +83,7 @@ in
       #logisim
       #jetbrains.clion
       pandoc
-      pywal
+      # pywal
       #dotnet-sdk
       bun
       cmake
@@ -91,7 +91,12 @@ in
       rars
       verilog
       tmux
-      tts
+      verible
+      foot
+      lunarvim
+      llvmPackages_15.clang-unwrapped
+      zathura
+      gnomeExtensions.unite
     ]) ++ (with pkgs.python311Packages; [ pip ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
