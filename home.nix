@@ -1,27 +1,5 @@
 { config, pkgs, ... }:
 
-# let
-  #unstable = import(builtins.fetchGit {
-  #  # Descriptive name to make the store path easier to identify
-  #  name = "nixos-unstable-2023-10-06";
-  #  url = "https://github.com/nixos/nixpkgs/";
-  #  # Commit hash for nixos-unstable as of 2023-10-06
-  #  # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-  #  ref = "refs/heads/nixos-unstable";
-  #  rev = "fdd898f8f79e8d2f99ed2ab6b3751811ef683242";
-  #});
-  # unstable = import(builtins.fetchTarball {
-  #   # Descriptive name to make the store path easier to identify
-  #   name = "nixos-unstable-2023-12-13";
-  #   url = "https://github.com/nixos/nixpkgs/archive/a9bf124c46ef298113270b1f84a164865987a91c.tar.gz";
-  #   sha256 = "0wdjv548d84s74wrncqqj5pdzfq7nj8xn97l0v7r82jl6124jil2";
-  #   
-  #   # Commit hash for nixos-unstable as of 2023-10-06
-  #   # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-  #   #ref = "refs/heads/nixos-unstable";
-  # })
-  # { config = config.nixpkgs.config; };
-# in
 {
   # Home Manager needs a bit of information about you and the paths it should manage.
   home.username = "yaman";
@@ -30,7 +8,8 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
-      url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+      url =
+        "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
       sha256 = "cb3uqBDHcdHY+x1tXSm5FvScQx5e9+qdADGSEVkhnlM=";
     }))
   ];
@@ -46,133 +25,135 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = (with pkgs;
-    [
-      # # Adds the 'hello' command to your environment. It prints a friendly
-      # # "Hello, world!" when run.
-      # pkgs.hello
+  home.packages = (with pkgs; [
+    # # Adds the 'hello' command to your environment. It prints a friendly
+    # # "Hello, world!" when run.
+    # pkgs.hello
 
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    # # It is sometimes useful to fine-tune packages, for example, by applying
+    # # overrides. You can do that directly here, just don't forget the
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # # fonts?
+    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
-      # rclone
-      gnome.gnome-software
-      krita
-      zotero
-      #obsidian
-      # iwgtk
-      # deluge
-      #jetbrains.webstorm
-      # zulu
-      # temurin-bin
-      ninja
-      # clang
-      pkg-config-unwrapped
-      libsecret
-      libjson
-      jsoncpp
-      gtk3 gtk4
-      wireshark
-      fuse-overlayfs
-      gettext
-      netcat-gnu jq
-      mlocate
-      #logisim
-      #jetbrains.clion
-      pandoc
-      # pywal
-      #dotnet-sdk
-      bun
-      cmake
-      verilator
-      rars
-      verilog
-      tmux
-      verible
-      foot
-      lunarvim
-      zathura
-      gnomeExtensions.unite
-      gnomeExtensions.xazantimes
-      gnome.nautilus
-      mpv
-      firefox
-      chromium
-      eza
-      tealdeer
-      ripgrep
-      fd
-      bat
-      fzf
-      nodejs
-      libsForQt5.okular
-      inkscape
-      starship
-      nil
-      kakounePlugins.parinfer-rust
-      noto-fonts amiri
-      keepassxc
-      zoom-us
-      gnomeExtensions.paperwm
-      gnomeExtensions.panel-corners
-      gnomeExtensions.blur-my-shell
-      gnomeExtensions.clipboard-indicator
-      dconf
-      gnome.dconf-editor
-      gnome.gnome-tweaks
-      wget
-      htop
-      btop
-      duf
-      ncdu
-      rustup
-      gcc
-      calibre
-      obs-studio
-      exfat
-      btrfs-progs
-      zip
-      unzip
-      atool
-      p7zip
-      # texlive.combined.scheme-full
-      nixfmt
-      qalculate-gtk
-      libqalculate
-      ark
-      # jdk17
-      qbittorrent
-      # emacsPgtkGcc
-      emacs-pgtk
-      tree-sitter
-      # texlab
-      gh
-      rclone
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.qt5ct
-      wl-clipboard
-      wireguard-tools
-      #  thunderbird
-      dav1d
-      typescript
-      ollama
-      evcxr
-    ]) ++ (with pkgs.python311Packages; [
-      pip
-      aioshutil
-      urllib3
-      pathvalidate
-      requests
-    ]);
+    # # You can also create simple shell scripts directly inside your
+    # # configuration. For example, this adds a command 'my-hello' to your
+    # # environment:
+    # (pkgs.writeShellScriptBin "my-hello" ''
+    #   echo "Hello, ${config.home.username}!"
+    # '')
+    # rclone
+    gnome.gnome-software
+    krita
+    zotero
+    #obsidian
+    # iwgtk
+    # deluge
+    #jetbrains.webstorm
+    # zulu
+    # temurin-bin
+    ninja
+    # clang
+    pkg-config-unwrapped
+    libsecret
+    libjson
+    jsoncpp
+    gtk3
+    gtk4
+    wireshark
+    fuse-overlayfs
+    gettext
+    netcat-gnu
+    jq
+    mlocate
+    #logisim
+    #jetbrains.clion
+    pandoc
+    # pywal
+    #dotnet-sdk
+    bun
+    cmake
+    verilator
+    rars
+    verilog
+    tmux
+    verible
+    foot
+    lunarvim
+    zathura
+    gnomeExtensions.unite
+    gnomeExtensions.xazantimes
+    gnome.nautilus
+    mpv
+    firefox
+    chromium
+    eza
+    tealdeer
+    ripgrep
+    fd
+    bat
+    fzf
+    nodejs
+    libsForQt5.okular
+    inkscape
+    starship
+    nil
+    kakounePlugins.parinfer-rust
+    noto-fonts
+    amiri
+    keepassxc
+    zoom-us
+    gnomeExtensions.paperwm
+    gnomeExtensions.panel-corners
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.clipboard-indicator
+    dconf
+    gnome.dconf-editor
+    gnome.gnome-tweaks
+    wget
+    htop
+    btop
+    duf
+    ncdu
+    rustup
+    gcc
+    calibre
+    obs-studio
+    exfat
+    btrfs-progs
+    zip
+    unzip
+    atool
+    p7zip
+    # texlive.combined.scheme-full
+    nixfmt
+    qalculate-gtk
+    libqalculate
+    ark
+    # jdk17
+    qbittorrent
+    # emacsPgtkGcc
+    emacs-pgtk
+    tree-sitter
+    # texlab
+    gh
+    rclone
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
+    wl-clipboard
+    wireguard-tools
+    #  thunderbird
+    dav1d
+    typescript
+    ollama
+    evcxr
+  ]) ++ (with pkgs.python311Packages; [
+    pip
+    aioshutil
+    urllib3
+    pathvalidate
+    requests
+  ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -237,20 +218,21 @@
   # };
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhsWithPackages (ps: with ps; [ 
-	rustup
-	nodejs
-	firefox
-	gcc
-	nixfmt
-	# rnix-lsp
-	neovim
-	glibc
-	fish
-	bash
-	verible
-	svls
-    ]);
+    package = pkgs.vscode.fhsWithPackages (ps:
+      with ps; [
+        rustup
+        nodejs
+        firefox
+        gcc
+        nixfmt
+        # rnix-lsp
+        neovim
+        glibc
+        fish
+        bash
+        verible
+        svls
+      ]);
     #extensions = with pkgs.vscode-extensions; [
     #  #dracula-theme.theme-dracula
     #  vscodevim.vim
@@ -264,7 +246,7 @@
   };
 
   nix = {
-      package = pkgs.nix;
-      settings.experimental-features = [ "nix-command" "flakes" ];
-    };
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
 }
