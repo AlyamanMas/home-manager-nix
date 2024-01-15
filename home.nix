@@ -75,7 +75,7 @@
       # zulu
       # temurin-bin
       ninja
-      clang
+      # clang
       pkg-config-unwrapped
       libsecret
       libjson
@@ -100,12 +100,79 @@
       verible
       foot
       lunarvim
-      llvmPackages_15.clang-unwrapped
       zathura
       gnomeExtensions.unite
-    ]) ++ (with pkgs.python311Packages; [ pip ]);
+      gnomeExtensions.xazantimes
+      gnome.nautilus
+      mpv
+      firefox
+      chromium
+      eza
+      tealdeer
+      ripgrep
+      fd
+      bat
+      fzf
+      nodejs
+      libsForQt5.okular
+      inkscape
+      starship
+      nil
+      kakounePlugins.parinfer-rust
+      noto-fonts amiri
+      keepassxc
+      zoom-us
+      gnomeExtensions.paperwm
+      gnomeExtensions.panel-corners
+      gnomeExtensions.blur-my-shell
+      gnomeExtensions.clipboard-indicator
+      dconf
+      gnome.dconf-editor
+      gnome.gnome-tweaks
+      wget
+      htop
+      btop
+      duf
+      ncdu
+      rustup
+      gcc
+      calibre
+      obs-studio
+      exfat
+      btrfs-progs
+      zip
+      unzip
+      atool
+      p7zip
+      # texlive.combined.scheme-full
+      nixfmt
+      qalculate-gtk
+      libqalculate
+      ark
+      # jdk17
+      qbittorrent
       # emacsPgtkGcc
       emacs-pgtk
+      tree-sitter
+      # texlab
+      gh
+      rclone
+      libsForQt5.qtstyleplugin-kvantum
+      libsForQt5.qt5ct
+      wl-clipboard
+      wireguard-tools
+      #  thunderbird
+      dav1d
+      typescript
+      ollama
+      evcxr
+    ]) ++ (with pkgs.python311Packages; [
+      pip
+      aioshutil
+      urllib3
+      pathvalidate
+      requests
+    ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -176,8 +243,7 @@
 	firefox
 	gcc
 	nixfmt
-	tree-sitter
-	rnix-lsp
+	# rnix-lsp
 	neovim
 	glibc
 	fish
