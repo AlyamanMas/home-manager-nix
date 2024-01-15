@@ -23,8 +23,6 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages = (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -192,30 +190,7 @@
 
   services.emacs.enable = true;
   services.emacs.package = pkgs.emacs-pgtk;
-  # systemd.timers."sync-documents-to-xp300-gd" = {
-  #   wantedBy = [ "timers.target" ];
-  #   unitConfig = {
-  #     Description = "Rclone Sync ~/Documents Service";
-  #   };
-  #   timerConfig = {
-  #     OnBootSec = "1h";
-  #     OnUnitActiveSec = "1h";
-  #     Unit = "sync-documents-to-xp300-gd.service";
-  #   };
-  # };
 
-  # systemd.services."sync-documents-to-xp300-gd" = {
-  #   unitConfig = {
-  #     Description = "Rclone Sync ~/Documents Service";
-  #     After = "network.target";
-  #   };
-  #   serviceConfig = {
-  #     ExecStart = "rclone sync ~/Documents/ xp300-gd:NIXOS-Documents";
-  #     Restart = "always";
-  #     RestartSec = "60";
-  #   };
-  #   wantedBy = ["default.target"];
-  # };
   programs.vscode = {
     enable = true;
     package = pkgs.vscode.fhsWithPackages (ps:
