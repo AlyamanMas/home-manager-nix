@@ -92,7 +92,6 @@
     nodejs
     libsForQt5.okular
     inkscape
-    starship
     nil
     kakounePlugins.parinfer-rust
     noto-fonts
@@ -129,7 +128,7 @@
     # jdk17
     qbittorrent
     # emacsPgtkGcc
-    emacs-pgtk
+    # emacs-pgtk
     tree-sitter
     # texlab
     gh
@@ -143,6 +142,10 @@
     typescript
     ollama
     evcxr
+    wofi
+    bandwhich
+    temurin-jre-bin
+    sshfs
   ]) ++ (with pkgs.python311Packages; [
     pip
     aioshutil
@@ -186,8 +189,8 @@
 
   services.syncthing.enable = true;
 
-  services.emacs.enable = true;
-  services.emacs.package = pkgs.emacs-pgtk;
+  # services.emacs.enable = true;
+  # services.emacs.package = pkgs.emacs-pgtk;
 
   programs.vscode = {
     enable = true;
