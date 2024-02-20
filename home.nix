@@ -5,14 +5,12 @@
   home.username = "yaman";
   home.homeDirectory = "/home/yaman";
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-      sha256 = "cb3uqBDHcdHY+x1tXSm5FvScQx5e9+qdADGSEVkhnlM=";
-    }))
+  imports = [
+    # Include the results of the hardware scan.
+    ./auc-gdrive-systemd-service.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
